@@ -14,6 +14,8 @@ There is nothing malicious in this repository, however third parties have been k
 + Added GUI blink mode, which only blinks GUI packets, and not movement - this can prevent some falsy bans. Packet list is in DMod.kt
 ```
 
+Please stop using /macrogui wrong, to do a GUI with a space in the title, either run without specifying a GUI parameter (next gui will be the title) or use an `_` for a space.
+
 ## Shoutout List
 - PopBob
 - DemarcusPeeked
