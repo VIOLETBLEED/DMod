@@ -35,11 +35,11 @@ object Chat {
         var message = message
         if (colours) message = message.replace("&".toRegex(), "\u00a7")
         if (message == "") return
-        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText(DMod.PREFIX + message))
+        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText(DMod.Companion.config.dmodPrefix + message))
     }
 
     fun sendPrefixComponent(component: IChatComponent?) {
-        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText(DMod.PREFIX).appendSibling(component))
+        Minecraft.getMinecraft().thePlayer.addChatMessage(ChatComponentText(DMod.Companion.config.dmodPrefix).appendSibling(component))
     }
 
     fun copyItemNBT() {

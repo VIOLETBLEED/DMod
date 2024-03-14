@@ -1,0 +1,10 @@
+accessWidener v1 named
+accessible method net/minecraft/client/gui/GuiChat sendAutocompleteRequest (Ljava/lang/String;Ljava/lang/String;)V
+accessible field net/minecraft/client/gui/inventory/GuiChest lowerChestInventory Lnet/minecraft/inventory/IInventory;
+accessible field net/minecraft/client/gui/GuiNewChat drawnChatLines Ljava/util/List;
+accessible field net/minecraft/client/gui/GuiNewChat scrollPos I
+accessible field net/minecraft/client/gui/GuiPlayerTabOverlay footer Lnet/minecraft/util/IChatComponent;
+accessible field net/minecraft/nbt/NBTTagCompound tagMap Ljava/util/Map;
+accessible field net/minecraft/world/World worldBorder Lnet/minecraft/world/border/WorldBorder;
+accessible field net/minecraft/client/gui/GuiRepair nameField Lnet/minecraft/client/gui/GuiTextField;
+accessible field net/minecraft/client/gui/inventory/GuiChest upperChestInventory  Lnet/minecraft/inventory/IInventory;

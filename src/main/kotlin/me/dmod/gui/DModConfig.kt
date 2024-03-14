@@ -182,8 +182,8 @@ object DModConfig : Vigilant(File("config/DMod.toml"), "DMod", sortingBehavior =
 //    @Property(type = PropertyType.SWITCH, name = "&9Include Unicode", description = "Unicode characters included in auto-fill.", category = "Misc")
 //    var doUnicode = false
 
-    @Property(type = PropertyType.SWITCH, name = "&dColor Chat", description = "Replaces & symbols with the section symbol.", category = "Misc")
-    var colorChat = false
+//    @Property(type = PropertyType.SWITCH, name = "&dColor Chat", description = "Replaces & symbols with the section symbol.", category = "Misc")
+//    var colorChat = false
 
     @Property(type = PropertyType.TEXT, name = "&bBlock Data", description = "Prints the data of the block you're looking at.", category = "Misc")
     var blockDataCommand = "blockdata"
@@ -263,6 +263,12 @@ object DModConfig : Vigilant(File("config/DMod.toml"), "DMod", sortingBehavior =
 
     @Property(type = PropertyType.SWITCH, name = "&6Book Limits", description = "Disables the limit in a book, including the author field.", category = "Limits")
     var disableBookLimit = true
+
+    @Property(type = PropertyType.TEXT, name = "&aDMod Prefix", description = "The prefix for DMod's messages.", category = "Misc")
+    var dmodPrefix = "&b[DMod] &f"
+
+    @Property(type = PropertyType.SWITCH, name = "&3Only Blink GUIs", description = "Adds the prefix to chat messages.", category = "Packets", subcategory = "Blink")
+    var onlyBlinkGui = false
 
     init {
         addDependency("blinkFirstMessage", "enableBlinkMessages")

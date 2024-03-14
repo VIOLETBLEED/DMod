@@ -44,11 +44,11 @@ public abstract class MixinEntityPlayerSP extends AbstractClientPlayer {
         }
     }
 
-    @Inject(method = "sendChatMessage", at=@At("HEAD"), cancellable = true)
-    public void sendChatMessage(String message, CallbackInfo ci) {
-        if (DMod.getConfig().getColorChat()) {
-            Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C01PacketChatMessage((message.replaceAll("&", "\u00a7")).replaceAll("\\\\n", "\n")));
-            ci.cancel();
-        }
-    }
+//    @Inject(method = "sendChatMessage", at=@At("HEAD"), cancellable = true)
+//    public void sendChatMessage(String message, CallbackInfo ci) {
+//        if (DMod.getConfig().getColorChat()) {
+//            Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C01PacketChatMessage((message.replaceAll("&", "\u00a7")).replaceAll("\\\\n", "\n")));
+//            ci.cancel();
+//        }
+//    }
 }

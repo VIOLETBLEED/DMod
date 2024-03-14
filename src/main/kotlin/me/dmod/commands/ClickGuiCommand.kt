@@ -28,7 +28,7 @@ class ClickGuiCommand : CommandBase() {
         } else if (args[0].equals("list", ignoreCase = true)) {
             val messageBuilder = StringBuilder("\u00a7b" + Variables.guiItems.size + "\u00a7f items waiting to be clicked.")
             for (item in Variables.guiItems) {
-                messageBuilder.append("\n").append(DMod.PREFIX).append("\u00a7fItem \u00a7a").append(item[1]).append("\u00a7f in GUI \u00a7a").append(item[0]).append("\u00a7f, \u00a7a").append(ordinal(item[2].toInt())).append(" Match").append("\u00a7f,")
+                messageBuilder.append("\n").append(DMod.config.dmodPrefix).append("\u00a7fItem \u00a7a").append(item[1]).append("\u00a7f in GUI \u00a7a").append(item[0]).append("\u00a7f, \u00a7a").append(ordinal(item[2].toInt())).append(" Match").append("\u00a7f,")
             }
             val message: String = if (Variables.guiItems.size > 0) messageBuilder.substring(0, messageBuilder.toString().length - 1) else messageBuilder.toString()
             sendPrefixMessage(message)

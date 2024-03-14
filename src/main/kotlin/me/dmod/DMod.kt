@@ -4,6 +4,8 @@ import me.dmod.commands.*
 import me.dmod.events.*
 import me.dmod.gui.DModConfig
 import me.dmod.utils.Config
+import net.minecraft.network.Packet
+import net.minecraft.network.play.client.*
 import net.minecraftforge.client.ClientCommandHandler
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.Mod
@@ -42,7 +44,6 @@ class DMod {
 
     companion object {
         const val MOD_ID: String = "DMod"
-        const val PREFIX: String = "\u00a7b[DMod] \u00a7f"
         @get:JvmName("getLogger")
         @JvmStatic
         val LOGGER: Logger = LogManager.getLogger(MOD_ID)
@@ -50,6 +51,16 @@ class DMod {
         val config = DModConfig
         @JvmStatic
         var initialized: Boolean = false
+
+        @JvmStatic
+        var blinkables: List<Class<*>> = listOf(
+            C08PacketPlayerBlockPlacement::class.java,
+            C0EPacketClickWindow::class.java,
+            C0DPacketCloseWindow::class.java,
+            C0FPacketConfirmTransaction::class.java,
+            C10PacketCreativeInventoryAction::class.java,
+            C17PacketCustomPayload::class.java,
+        )
     }
 
 }

@@ -20,7 +20,5 @@
     "MixinNetworkManager",
     "MixinPacketBuffer",
     "MixinTileEntitySignRenderer"
-  ],
-  "server": [],
-  "client": []
+  ]
 }

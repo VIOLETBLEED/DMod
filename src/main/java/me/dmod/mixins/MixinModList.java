@@ -17,13 +17,16 @@ import java.util.Map;
 @Mixin(FMLHandshakeMessage.ModList.class)
 public abstract class MixinModList {
     @Shadow private Map<String, String> modTags;
-    @Inject(at=@At("RETURN"), method = "<init>(Ljava/util/List;)V")
+    @Inject(at=@At("RETURN"), method = "<init>(Ljava/util/List;)V", remap = false)
     public void ModList(List<ModContainer> modList, CallbackInfo ci) {
         if (DMod.getConfig().getHideModsList()) {
             if (Minecraft.getMinecraft().getIntegratedServer() == null) {
                 List<String> forgeMods = Arrays.asList("FML", "Forge", "mcp");
                 modTags.entrySet().removeIf(entry -> !forgeMods.contains(entry.getKey()));
             }
+        } else {
+            // hide DMod anyway, as it is blacklisted
+            modTags.remove(DMod.MOD_ID);
         }
     }
 }

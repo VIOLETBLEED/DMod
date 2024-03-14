@@ -160,19 +160,19 @@ class DModCommand : CommandBase() {
                 }
                 "self" -> Minecraft.getMinecraft().netHandler.addToSendQueue(C02PacketUseEntity(Minecraft.getMinecraft().thePlayer, C02PacketUseEntity.Action.INTERACT))
                 "hide" -> crashClearInventory()
-                "fly" -> {
-                    Variables.isFlying = !Variables.isFlying
-                    if (Variables.isFlying) {
-                        sendPrefixMessage("\u00a7aEnabled flying.")
-                        Minecraft.getMinecraft().thePlayer.capabilities.allowFlying = true
-                        Minecraft.getMinecraft().thePlayer.capabilities.flySpeed = config.flightSpeed.toFloat() / 20
-                    } else {
-                        sendPrefixMessage("\u00a7cDisabled flying.")
-                        Minecraft.getMinecraft().thePlayer.capabilities.allowFlying = Variables.shouldReEnableFlight
-                        Minecraft.getMinecraft().thePlayer.capabilities.isFlying = false
-                        Minecraft.getMinecraft().thePlayer.capabilities.flySpeed = 0.05f
-                    }
-                }
+//                "fly" -> {
+//                    Variables.isFlying = !Variables.isFlying
+//                    if (Variables.isFlying) {
+//                        sendPrefixMessage("\u00a7aEnabled flying.")
+//                        Minecraft.getMinecraft().thePlayer.capabilities.allowFlying = true
+//                        Minecraft.getMinecraft().thePlayer.capabilities.flySpeed = config.flightSpeed.toFloat() / 20
+//                    } else {
+//                        sendPrefixMessage("\u00a7cDisabled flying.")
+//                        Minecraft.getMinecraft().thePlayer.capabilities.allowFlying = Variables.shouldReEnableFlight
+//                        Minecraft.getMinecraft().thePlayer.capabilities.isFlying = false
+//                        Minecraft.getMinecraft().thePlayer.capabilities.flySpeed = 0.05f
+//                    }
+//                }
                 "tp" -> teleportTo(args[1].toFloat().toDouble(), args[2].toFloat().toDouble(), args[3].toFloat().toDouble())
                 "blink" -> if (args.size < 2 || args[1].split(":").toTypedArray().size < 3) sendPrefixMessage("Format\u00a77: \u00a73/DMod blink 15:29:10") else {
                     val time = args[1].split(":").toTypedArray()

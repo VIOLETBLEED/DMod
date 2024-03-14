@@ -30,3 +30,16 @@ run
 .DS_Store
 Thumbs.db
 bytecode
+### ForgeGradle template
+# Minecraft client/server files
+run/
+
+### VisualStudioCode template
+.vscode/*
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
