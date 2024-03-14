@@ -265,7 +265,7 @@ object DModConfig : Vigilant(File("config/DMod.toml"), "DMod", sortingBehavior =
     var disableBookLimit = true
 
     @Property(type = PropertyType.TEXT, name = "&aDMod Prefix", description = "The prefix for DMod's messages.", category = "Misc")
-    var dmodPrefix = "§c§lD §7(§cThe §6D §estands §afor §3Dick§7) §f§lMod"
+    var dmodPrefix = "§7[§cD§7(§cThe §6D §estands §afor §3Dick§7)§fMod§7]§r "
     
     @Property(type = PropertyType.SWITCH, name = "&3Only Blink GUIs", description = "Adds the prefix to chat messages.", category = "Packets", subcategory = "Blink")
     var onlyBlinkGui = false
