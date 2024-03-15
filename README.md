@@ -1,3 +1,9 @@
+
+# Important: Project is being rewritten
+Due to, well, very much forseen circumstances, we are in the process of rewriting most of DMod from the ground up over in the development branch.
+
+As such, bug fixes, and new updates, are likely to be sparse until the work is done, which I expect to be sometime in ~~May 2024~~ will be when it will be, basically.
+
 # bladecyn/DMod - Difference
 
 Due to the state of ratting in the cheating community, releases will be only published via GitHub Actions CI. 

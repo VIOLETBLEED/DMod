@@ -12,7 +12,7 @@ plugins {
     idea
 }
 
-version = "1.16.9"
+version = "1.16.10"
 group = "me"
 
 loom {
@@ -28,12 +28,11 @@ loom {
     forge {
         pack200Provider.set(Pack200Adapter())
         mixinConfig("dmod.mixins.json")
+        accessTransformer("src/main/resources/META-INF/DMod_at.cfg")
     }
     mixin {
         defaultRefmapName = "mixins.dmod.refmap.json"
-    }
-    accessWidenerPath.set(file("src/main/resources/META-INF/DMod.accesswidener"))
-}
+    } }
 
 repositories {
     mavenLocal()

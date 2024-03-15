@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-@Mixin(FMLHandshakeMessage.ModList.class)
+@Mixin(value = FMLHandshakeMessage.ModList.class, remap = false)
 public abstract class MixinModList {
     @Shadow private Map<String, String> modTags;
     @Inject(at=@At("RETURN"), method = "<init>(Ljava/util/List;)V", remap = false)
