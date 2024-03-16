@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = ItemStack.class, remap = false)
+@Mixin(value = ItemStack.class)
 public abstract class MixinItemStack {
     @Shadow
     private RegistryDelegate<Item> delegate;
