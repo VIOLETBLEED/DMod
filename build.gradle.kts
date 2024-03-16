@@ -32,7 +32,8 @@ loom {
     }
     mixin {
         defaultRefmapName = "mixins.dmod.refmap.json"
-    } }
+    }
+}
 
 repositories {
     mavenLocal()
@@ -129,7 +130,8 @@ tasks {
                             "ForceLoadAsMod" to true,
                             "TweakClass" to "gg.essential.loader.stage0.EssentialSetupTweaker",
                             "TweakOrder" to "0",
-                            "MixinConfigs" to "dmod.mixins.json"
+                            "MixinConfigs" to "dmod.mixins.json",
+                            "FMLAT" to "DMod_at.cfg"
                     )
             )
         }
