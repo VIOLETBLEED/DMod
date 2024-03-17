@@ -1,14 +1,17 @@
 package me.dmod.utils
 
+import me.dmod.DMod
 import me.dmod.DMod.Companion.config
 import net.minecraft.client.Minecraft
 import net.minecraft.network.Packet
 import net.minecraft.network.play.client.C0DPacketCloseWindow
 import net.minecraft.network.play.client.C0EPacketClickWindow
 import net.minecraft.network.play.client.C12PacketUpdateSign
+import net.minecraft.network.play.client.C17PacketCustomPayload
 import net.minecraft.network.play.server.*
 import net.minecraft.util.ChatComponentText
 import net.minecraft.util.IChatComponent
+import org.apache.commons.codec.binary.Hex
 
 object Logging {
     @JvmStatic
@@ -26,6 +29,20 @@ object Logging {
         }
     }
 
+    class DModularException(message: String?) : Exception(message)
+    
+    @JvmStatic
+    fun logCustomPayload(packet: S3FPacketCustomPayload) {
+        if(Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().theWorld == null) return
+        Chat.sendPrefixMessage("§aReceived §fCustom Payload Packet§7: §bChannel§7: §3${packet.channelName}§7, §bData§7: §3${packet.bufferData}§7.")
+    }
+    
+    @JvmStatic
+    fun logCustomPayload(packet: C17PacketCustomPayload) {
+        if(Minecraft.getMinecraft().thePlayer == null || Minecraft.getMinecraft().theWorld == null) return
+        Chat.sendPrefixMessage("§aSent §fCustom Payload Packet§7: §bChannel§7: §3${packet.channelName}§7, §bData§7: §3${packet.bufferData}§7.")
+    }
+    
     private fun logCPacketUpdateSign(packet: C12PacketUpdateSign) {
         val lines = StringBuilder()
         for (i in packet.lines.indices) {

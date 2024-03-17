@@ -2,9 +2,9 @@
 {
   "modid": "DMod",
   "name": "DMod",
-  "description": "something that does stuff when certain conditions are met",
+  "description": "Shoutout DeMarcus",
   "version": "${version}",
-  "authorList": [""],
-  "mcversion": "${mcversion}",
+  "authorList": ["IGoon4Fun, _deotime (original creator)", "Amelia (current maintainer)", "DeMarcus Peeked (Creator of DPC)", "Lily Skytils (I LOVE lily skytils)"],
+  "mcversion": "${mcversion}"
 }
 ]

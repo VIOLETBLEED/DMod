@@ -14,6 +14,7 @@ class DModLocations : GuiScreen() {
     private var display: PosButton? = null
     private var tps: PosButton? = null
     private var activeMacros: PosButton? = null
+    private var watermark: PosButton? = null
     override fun doesGuiPauseGame(): Boolean {
         return false
     }
@@ -32,13 +33,17 @@ ${config.macroHoveringMessageContent}"""
                 .replace("%n", "Crafting")
                 .replace("%g", "Craft Item")
                 .replace("&".toRegex(), "\u00a7")
+        val watermarkMessage = config.watermarkHoveringText
+                .replace("&".toRegex(), "\u00a7")
         val resolution = ScaledResolution(Minecraft.getMinecraft())
         display = PosButton(0, config.blinkTextX % resolution.scaledWidth, config.blinkTextY % resolution.scaledHeight, 145.0, 102.0, 1.0, blinkText, null, 0)
         tps = PosButton(1, config.serverTpsTextX % resolution.scaledWidth, config.serverTpsTextY % resolution.scaledHeight, 145.0, 102.0, 1.0, tpsMessage, null, 0)
         activeMacros = PosButton(2, config.activeMacrosX % resolution.scaledWidth, config.activeMacrosY % resolution.scaledHeight, 145.0, 102.0, 1.0, activeMacrosMessage, null, 0)
+        watermark = PosButton(3, config.watermarkX % resolution.scaledWidth, config.watermarkY % resolution.scaledHeight, 145.0, 102.0, 1.0, watermarkMessage, null, 0)
         buttonList.add(display)
         buttonList.add(tps)
         buttonList.add(activeMacros)
+        buttonList.add(watermark)
     }
 
     override fun drawScreen(mouseX: Int, mouseY: Int, partialTicks: Float) {
@@ -67,8 +72,14 @@ ${config.macroHoveringMessageContent}"""
                 "activeMacros" -> {
                     config.activeMacrosX = config.activeMacrosX + xMoved
                     config.activeMacrosY = config.activeMacrosY + yMoved
-                    tps!!.xPosition = config.activeMacrosX
-                    tps!!.yPosition = config.activeMacrosY
+                    activeMacros!!.xPosition = config.activeMacrosX
+                    activeMacros!!.yPosition = config.activeMacrosY
+                }
+                "watermark" -> {
+                    config.watermarkX += xMoved
+                    config.watermarkY += yMoved
+                    watermark!!.xPosition = config.watermarkX
+                    watermark!!.yPosition = config.watermarkY
                 }
             }
             buttonList.clear()
@@ -84,6 +95,7 @@ ${config.macroHoveringMessageContent}"""
                 button === display -> moving = "display"
                 button === tps -> moving = "tps"
                 button === activeMacros -> moving = "activeMacros"
+                button === watermark -> moving = "watermark"
             }
         }
     }

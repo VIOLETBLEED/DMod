@@ -26,6 +26,12 @@ object DModConfig : Vigilant(File("config/DMod.toml"), "DMod", sortingBehavior =
     @Property(type = PropertyType.NUMBER, name = "Blink Text Y Pos", description = "The position on the Y axis. /dmod pos to edit.", category = "Packets", subcategory = "Blink", max = Int.MAX_VALUE, hidden = true)
     var blinkTextY = 10
 
+    @Property(type = PropertyType.NUMBER, name = "Watermark X Pos", description = "The position on the X axis. /dmod pos to edit.", category = "Misc", max = Int.MAX_VALUE, hidden = true)
+    var watermarkX = 0
+    
+    @Property(type = PropertyType.NUMBER, name = "Watermark Y Pos", description = "The position on the Y axis. /dmod pos to edit.", category = "Misc", max = Int.MAX_VALUE, hidden = true)
+    var watermarkY = 0
+    
     @Property(type = PropertyType.SWITCH, name = "&3Blink Messages", description = "Toggles blink messages.", category = "Packets", subcategory = "Blink")
     var enableBlinkMessages = true
 
@@ -269,7 +275,16 @@ object DModConfig : Vigilant(File("config/DMod.toml"), "DMod", sortingBehavior =
     
     @Property(type = PropertyType.SWITCH, name = "&3Only Blink GUIs", description = "Adds the prefix to chat messages.", category = "Packets", subcategory = "Blink")
     var onlyBlinkGui = false
-
+    
+    @Property(type = PropertyType.SWITCH, name = "&7Log Custom Payloads", description =  "Logs badlionable custom payloads", category =  "Packets", subcategory = "Logging")
+    var logBadlionPayloads = false
+    
+    @Property(type = PropertyType.TEXT, name = "&cChannel Whitelist", description = "Whitelists channels to log, leave &cblank&r to log every channel. (May cause spam in certain glitchy conditions!)", category = "Packets", subcategory = "Logging")
+    var channelWhitelist = ""
+    
+    @Property(type = PropertyType.TEXT, name = "&aWatermark Hovering Text", description = "The text that hovers on the screen.", category = "Misc")
+    var watermarkHoveringText = "§zDMod §7v§c2.1.0 §7(§6The §eD §estands §afor §3Dick§7)"
+    
     init {
         addDependency("blinkFirstMessage", "enableBlinkMessages")
         addDependency("blinkSecondMessage", "enableBlinkMessages")

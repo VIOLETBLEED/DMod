@@ -106,7 +106,7 @@ object Utils {
         val tps = Variables.tps
         if (tps <= -2f) return "&cFROZEN"
         if (tps == -1f || tps.isNaN()) return "&7Loading..."
-        return String.format("%.1f", tps)
+        return String.format("%.20f", tps)
     }
 
     fun getRandomPlayer(excludeSelf: Boolean = false): NetworkPlayerInfo? {

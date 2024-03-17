@@ -14,17 +14,24 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.server.*;
 import net.minecraft.network.status.client.C01PacketPing;
+import org.apache.commons.codec.binary.Hex;
+import org.apache.logging.log4j.Logger;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
 @Mixin(NetworkManager.class)
 public abstract class MixinNetworkManager {
+    @Shadow @Final private static Logger logger;
+
     @Inject(method = "sendPacket(Lnet/minecraft/network/Packet;)V", at = @At("HEAD"), cancellable = true)
     public void sendPacket(Packet<?> packetIn, CallbackInfo callbackInfo) {
         // Don't blink pings... Not healthy for kicks
@@ -58,6 +65,14 @@ public abstract class MixinNetworkManager {
     @Inject(method = "channelRead0", at = @At("HEAD"), cancellable = true)
     private void onChannelRead(ChannelHandlerContext context, Packet<?> packet, CallbackInfo callbackInfo) {
         if (packet instanceof S03PacketTimeUpdate) ServerTimeEvent.timeUpdate();
+        if(DMod.getConfig().getLogBadlionPayloads()) {
+            if (packet instanceof S3FPacketCustomPayload) {
+                Logging.logCustomPayload((S3FPacketCustomPayload) packet);
+            }
+            if (packet instanceof C17PacketCustomPayload) {
+                Logging.logCustomPayload((C17PacketCustomPayload) packet);
+            }
+        }
         if (DMod.getConfig().getInstantCloseGui() && packet instanceof S2DPacketOpenWindow) {
             Minecraft.getMinecraft().getNetHandler().addToSendQueue(new C0DPacketCloseWindow());
         }

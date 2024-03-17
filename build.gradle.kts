@@ -66,13 +66,9 @@ dependencies {
         exclude(module = "gson")
     }
 
+    shadowMe(annotationProcessor("io.github.llamalad7:mixinextras-common:0.3.2")!!)
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
     compileOnly("org.spongepowered:mixin:0.8.5")
-    shadowMe("org.spongepowered:mixin:0.8.5") {
-        exclude(module = "guava")
-        exclude(module = "gson")
-        exclude(module = "commons-io")
-    }
 }
 
 sourceSets {
@@ -100,7 +96,9 @@ tasks {
         archiveClassifier.set("dev")
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
-        configurations = listOf(shadowMe)
+        configurations = listOf(shadowMe, packageLib)
+
+        relocate("com.llamalad7.mixinextras", "me.dmod.mixinextras")
 
         exclude(
             "**/LICENSE.md",
@@ -118,9 +116,6 @@ tasks {
             "fabric.mod.json",
             "/**/META-INF/services/io.ktor.serialization.kotlinx.KotlinxSerializationExtensionProvider"
         )
-        mergeServiceFiles {
-            ///
-        }
     }
     named<Jar>("jar") {
         manifest {

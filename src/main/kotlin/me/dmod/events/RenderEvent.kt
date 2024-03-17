@@ -9,6 +9,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 class RenderEvent {
     @SubscribeEvent
     fun renderOverlay(event: RenderGameOverlayEvent.Text?) {
+        if(config.watermarkHoveringText != "") {
+            Render.renderString(config.watermarkX, config.watermarkY, config.watermarkHoveringText)
+        }
         if (config.enableBlink && config.enableBlinkTitle) {
             Packets.displayBlinkTimer()
         }
