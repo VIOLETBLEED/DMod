@@ -4,7 +4,7 @@ Due to, well, very much forseen circumstances, we are in the process of rewritin
 
 As such, bug fixes, and new updates, are likely to be sparse until the work is done, which I expect to be sometime in ~~May 2024~~ will be when it will be, basically.
 
-# bladecyn/DMod - Difference
+# ameliag0d/DMod - Difference
 
 Due to the state of ratting in the cheating community, releases will be only published via GitHub Actions CI. 
 I don't condone ratting (obviously), or even cheating in general. This is a tool for finding exploits, and should be used as such.
